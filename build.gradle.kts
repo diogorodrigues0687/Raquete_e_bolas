@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("io.github.palex65:CanvasLib-jvm:1.0.2")
 }
 
 tasks.test {
