@@ -1,25 +1,29 @@
 import pt.isel.canvas.*
-import javax.swing.Spring.height
 
-/** Bolas do jogo**/
-data class Ball(val x: Int, val y: Int, val radius: Int, val dx: Int, val dy: Int, val color: Int = YELLOW)
+/**Bolas do jogo**/
+data class Ball(val x: Int, val y: Int, val dx: Int, val dy: Int, val radius: Int = 7)
 
-/** Função do movimento das bolas na horizontal**/
-fun moveX(ball: Ball): Ball {
-    val  newXDirection = when {
-        ball.x + ball.radius > 400 -> -ball.dx
-        ball.x - ball.radius < 0 -> -ball.dx
-        else -> ball.dx
-    }
-    return Ball(ball.x + newXDirection, ball.y, ball.radius, newXDirection, ball.dy, ball.color)
+/** Função que desenha a bola **/
+fun drawBall(canvas: Canvas, ball: Ball) {
+    canvas.drawCircle(ball.x, ball.y, ball.radius, YELLOW)
 }
 
-/**Função do movimento das bolas na vertical**/
-fun moveY(ball: Ball): Ball {
-    val  newYDirection = when {
-        ball.y + ball.radius > 600 -> -ball.dy
-        ball.y - ball.radius < 0 -> -ball.dy
-        else -> ball.dy
-    }
-    return Ball(ball.x, ball.y + newYDirection, ball.radius, ball.dx, newYDirection, ball.color)
+/** Função que move a bola com base na direção do deslocamento **/
+fun moveBall(ball: Ball): Ball =
+    ball.copy(x = ball.x + ball.dx, y = ball.y + ball.dy)
+
+/**Função da direção das bolas**/
+fun ballDirections(ball: Ball, area: Area): Ball {
+    var ballX = ball.x + ball.dx
+    var ballY = ball.y + ball.dy
+    var newDirectionX = ball.dx
+    var newDirectionY = ball.dy
+
+    if (ballX - ball.radius <= 0 || ballX + ball.radius >= area.width)
+        newDirectionX = -newDirectionX
+
+    if (ballY - ball.radius <= 0)
+        newDirectionY = -newDirectionY
+
+    return ball.copy(x = ballX, y = ballY, dx = newDirectionX, dy = newDirectionY)
 }
