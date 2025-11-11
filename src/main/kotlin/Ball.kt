@@ -5,25 +5,12 @@ data class Ball(val x: Int, val y: Int, val dx: Int, val dy: Int, val radius: In
 
 /** Função que desenha a bola **/
 fun drawBall(canvas: Canvas, ball: Ball) {
-    canvas.drawCircle(ball.x, ball.y, ball.radius, YELLOW)
+    canvas.drawCircle(ball.x, ball.y, ball.radius, CYAN)
 }
-
-/** Função que move a bola com base na direção do deslocamento **/
-fun moveBall(ball: Ball): Ball =
-    ball.copy(x = ball.x + ball.dx, y = ball.y + ball.dy)
 
 /**Função da direção das bolas**/
 fun ballDirections(ball: Ball, area: Area): Ball {
-    var ballX = ball.x + ball.dx
-    var ballY = ball.y + ball.dy
-    var newDirectionX = ball.dx
-    var newDirectionY = ball.dy
-
-    if (ballX - ball.radius <= 0 || ballX + ball.radius >= area.width)
-        newDirectionX = -newDirectionX
-
-    if (ballY - ball.radius <= 0)
-        newDirectionY = -newDirectionY
-
-    return ball.copy(x = ballX, y = ballY, dx = newDirectionX, dy = newDirectionY)
+        val newDirectionX = if (ball.x - ball.radius <= 0 || ball.x + ball.radius >= area.width) -ball.dx else ball.dx
+        val newDirectionY = if (ball.y - ball.radius <= 0) -ball.dy else ball.dy
+        return ball.copy(x = ball.x + newDirectionX, y = ball.y + newDirectionY, dx = newDirectionX, dy = newDirectionY)
 }

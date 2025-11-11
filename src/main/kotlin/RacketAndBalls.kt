@@ -11,11 +11,15 @@ fun main() {
         drawGame(window, game)
         window.onMouseMove { mouse ->
             game = game.copy(racket = moveRacket(game.racket, mouse.x))
-            drawGame(window, game)
+            drawRacket(window, game.racket)
         }
         window.onTimeProgress(10) {
             game = updateGame(game)
             drawGame(window, game)
+        }
+        window.onTimeProgress(5000) {
+            val newBall = Ball(windowX.random(), 595, dirX.random(), -4)
+            game = game.copy(balls = game.balls + newBall)
         }
     }
     onFinish {

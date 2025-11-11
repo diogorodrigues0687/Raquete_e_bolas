@@ -11,3 +11,8 @@ fun drawRacket(canvas: Canvas, racket: Racket) {
 /**Função que faz com que a raquete acompanhe o rato no eixo dos X**/
 fun moveRacket(racket: Racket, cursor: Int): Racket =
     racket.copy(x = cursor - racket.width / 2)
+
+/**Função da raquete refletora**/
+fun reflectOnRacket(ball: Ball, racket: Racket): Ball {
+    return TODO()
+}
