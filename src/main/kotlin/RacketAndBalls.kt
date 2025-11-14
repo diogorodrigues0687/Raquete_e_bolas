@@ -14,7 +14,7 @@ fun main() {
         val window = Canvas(WIDTH, HEIGHT, BLACK)
         val windowX = 0..area.width
         val dirX = -6..6
-        var game = Game(area = Area(), balls = listOf(Ball(windowX.random(), 595, dirX.random(), -4)), racket = Racket(x = 155, y = 560))
+        var game = Game(area = Area(), balls = emptyList(), racket = Racket(x = 155, y = 560))
         window.onMouseMove { mouse ->
             game = game.copy(racket = moveRacket(game.racket, mouse.x))
             drawRacket(window, game.racket)

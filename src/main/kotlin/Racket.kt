@@ -9,8 +9,12 @@ fun drawRacket(canvas: Canvas, racket: Racket) {
 }
 
 /**Função que faz com que a raquete acompanhe o rato no eixo dos X**/
-fun moveRacket(racket: Racket, cursor: Int): Racket =
-    racket.copy(x = cursor - racket.width / 2)
+fun moveRacket(racket: Racket, cursor: Int): Racket {
+    val cursorX = cursor - racket.width / 2
+    val xLimit = cursorX.coerceIn(0, 400 - racket.width)
+    return racket.copy(x = xLimit)
+}
+
 
 /**Função que modifica dx da bola conforme a colisão com as partes da raquete**/
 fun RacketParts(ball: Ball, racket: Racket): Int {
@@ -20,13 +24,12 @@ fun RacketParts(ball: Ball, racket: Racket): Int {
     val center = 25..65
     val rightMid = 65..80
     val rightExtreme = 80..90
-
     return when (pos) {
         in leftExtreme -> (ball.dx - 3).coerceIn(-6, 6)
-        in leftMid     -> (ball.dx - 1).coerceIn(-6, 6)
-        in center      ->  ball.dx
-        in rightMid    -> (ball.dx + 1).coerceIn(-6, 6)
-        in rightExtreme-> (ball.dx + 3).coerceIn(-6, 6)
+        in leftMid -> (ball.dx - 1).coerceIn(-6, 6)
+        in center ->  ball.dx
+        in rightMid -> (ball.dx + 1).coerceIn(-6, 6)
+        in rightExtreme -> (ball.dx + 3).coerceIn(-6, 6)
         else -> ball.dx
     }
 }
