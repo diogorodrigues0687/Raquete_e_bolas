@@ -1,6 +1,5 @@
 import pt.isel.canvas.*
 import kotlin.random.Random
-
 const val RACKET_WIDTH = 90
 const val RACKET_HEIGHT = 10
 const val RADIUS = 7
@@ -26,10 +25,9 @@ fun main() {
         window.onTimeProgress(10) {
             game = updateGame(game)
             drawGame(window, game)
-            window.drawText(WIDTH/2, 300, "Avalia :)", 0xFF7F00, 40)
+            window.drawText(WIDTH/2, 300, ":)", 0xFF7F00, 40)
             window.drawText(WIDTH/2, 595, "${game.balls.size}", 0xFF7F00, 26)
         }
-
     }
     onFinish {
         println("Quitting...")

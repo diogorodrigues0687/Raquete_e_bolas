@@ -5,7 +5,11 @@ data class Racket(val x: Int, val y: Int, val width: Int = RACKET_WIDTH, val hei
 
 /**Função que desenha a raquete**/
 fun drawRacket(canvas: Canvas, racket: Racket) {
-    canvas.drawRect(racket.x, racket.y, racket.width, racket.height, 0xFF7F00)
+    canvas.drawRect(racket.x, racket.y, 10, racket.height - 5, RED)
+    canvas.drawRect(racket.x + 10, racket.y, 15, racket.height-3, YELLOW)
+    canvas.drawRect(racket.x + 25, racket.y, 40, racket.height, 0xFF7F00)
+    canvas.drawRect(racket.x + 65, racket.y, 15, racket.height-3, YELLOW)
+    canvas.drawRect(racket.x + 80, racket.y, 10, racket.height-5, RED)
 }
 
 /**Função que faz com que a raquete acompanhe o rato no eixo dos X**/
