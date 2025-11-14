@@ -5,11 +5,11 @@ data class Racket(val x: Int, val y: Int, val width: Int = RACKET_WIDTH, val hei
 
 /**Função que desenha a raquete**/
 fun drawRacket(canvas: Canvas, racket: Racket) {
-    canvas.drawRect(racket.x, racket.y, 10, racket.height - 5, RACKET_ELER_COLOR)
-    canvas.drawRect(racket.x + 10, racket.y, 15, racket.height-3, RACKET_EMRM_COLOR)
-    canvas.drawRect(racket.x + 25, racket.y, 40, racket.height, RACKET_CENTER)
-    canvas.drawRect(racket.x + 65, racket.y, 15, racket.height-3, RACKET_EMRM_COLOR)
-    canvas.drawRect(racket.x + 80, racket.y, 10, racket.height-5, RACKET_ELER_COLOR)
+    canvas.drawRect(racket.x , racket.y, RACKET_WIDTH, racket.height, RACKET_CENTER_COLOR)
+    canvas.drawRect(racket.x, racket.y, RACKET_EWIDTH, racket.height - 5, RACKET_ELER_COLOR)
+    canvas.drawRect(racket.x + 10, racket.y, RACKET_MWIDTH, racket.height-5, RACKET_EMRM_COLOR)
+    canvas.drawRect(racket.x + 65, racket.y, RACKET_MWIDTH, racket.height-5, RACKET_EMRM_COLOR)
+    canvas.drawRect(racket.x + 80, racket.y, RACKET_EWIDTH, racket.height-5, RACKET_ELER_COLOR)
 }
 
 /**Função que faz com que a raquete acompanhe o rato no eixo dos X**/
@@ -39,5 +39,5 @@ fun RacketParts(ball: Ball, racket: Racket): Int {
 
 /**Função da raquete refletora**/
 fun reflectOnRacket(ball: Ball, racket: Racket): Ball =
-    ball.copy(dy = -ball.dy, dx = RacketParts(ball, racket), y = racket.y - ball.radius - 1,)
+    ball.copy(dy = -ball.dy, dx = RacketParts(ball, racket), y = racket.y - ball.radius - 1,) //Para evitar que a bola fique presa na raquete
 
