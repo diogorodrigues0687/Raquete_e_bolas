@@ -26,8 +26,8 @@ fun main() {
         window.onTimeProgress(10) {
             game = updateGame(game)
             drawGame(window, game)
-            window.drawText(200, 300, ":)", 0xFF7F00, 40)
-            window.drawText(200, 595, "${game.balls.size}", 0xFF7F00, 26)
+            window.drawText(WIDTH/2, 300, "Avalia :)", 0xFF7F00, 40)
+            window.drawText(WIDTH/2, 595, "${game.balls.size}", 0xFF7F00, 26)
         }
 
     }
