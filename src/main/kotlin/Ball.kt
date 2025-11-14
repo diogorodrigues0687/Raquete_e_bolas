@@ -5,7 +5,7 @@ data class Ball(val x: Int, val y: Int, val dx: Int, val dy: Int, val radius: In
 
 /** Função que desenha a bola **/
 fun drawBall(canvas: Canvas, ball: Ball) {
-    canvas.drawCircle(ball.x, ball.y, ball.radius, 0xFF7F00)
+    canvas.drawCircle(ball.x, ball.y, ball.radius, BALL_COLOR)
 }
 
 /**Função da direção das bolas**/

@@ -5,20 +5,19 @@ data class Racket(val x: Int, val y: Int, val width: Int = RACKET_WIDTH, val hei
 
 /**Função que desenha a raquete**/
 fun drawRacket(canvas: Canvas, racket: Racket) {
-    canvas.drawRect(racket.x, racket.y, 10, racket.height - 5, RED)
-    canvas.drawRect(racket.x + 10, racket.y, 15, racket.height-3, YELLOW)
-    canvas.drawRect(racket.x + 25, racket.y, 40, racket.height, 0xFF7F00)
-    canvas.drawRect(racket.x + 65, racket.y, 15, racket.height-3, YELLOW)
-    canvas.drawRect(racket.x + 80, racket.y, 10, racket.height-5, RED)
+    canvas.drawRect(racket.x, racket.y, 10, racket.height - 5, RACKET_ELER_COLOR)
+    canvas.drawRect(racket.x + 10, racket.y, 15, racket.height-3, RACKET_EMRM_COLOR)
+    canvas.drawRect(racket.x + 25, racket.y, 40, racket.height, RACKET_CENTER)
+    canvas.drawRect(racket.x + 65, racket.y, 15, racket.height-3, RACKET_EMRM_COLOR)
+    canvas.drawRect(racket.x + 80, racket.y, 10, racket.height-5, RACKET_ELER_COLOR)
 }
 
 /**Função que faz com que a raquete acompanhe o rato no eixo dos X**/
 fun moveRacket(racket: Racket, cursor: Int): Racket {
     val cursorX = cursor - racket.width / 2
-    val xLimit = cursorX.coerceIn(0, 400 - racket.width)
+    val xLimit = cursorX.coerceIn(MIN_RACKET_X, MAX_RACKET_X - racket.width)
     return racket.copy(x = xLimit)
 }
-
 
 /**Função que modifica dx da bola conforme a colisão com as partes da raquete**/
 fun RacketParts(ball: Ball, racket: Racket): Int {
