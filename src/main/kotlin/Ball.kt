@@ -18,6 +18,6 @@ fun ballDirections(ball: Ball, area: Area, racket: Racket): Ball {
     }
     val newX = ball.x + newDirectionX
     val newY = ball.y + newDirectionY
-    val dxLimit = newDirectionX.coerceIn(-6, 6)
+    val dxLimit = newDirectionX.coerceIn(MIN_DX, MAX_DX)
     return ball.copy(x = newX, y = newY, dx = dxLimit, dy = newDirectionY)
 }

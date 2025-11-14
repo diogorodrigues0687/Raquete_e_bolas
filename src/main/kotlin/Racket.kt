@@ -28,11 +28,11 @@ fun RacketParts(ball: Ball, racket: Racket): Int {
     val rightMid = 65..80
     val rightExtreme = 80..90
     return when (pos) {
-        in leftExtreme -> (ball.dx - 3).coerceIn(-6, 6)
-        in leftMid -> (ball.dx - 1).coerceIn(-6, 6)
+        in leftExtreme -> (ball.dx - 3).coerceIn(MIN_DX, MAX_DX)
+        in leftMid -> (ball.dx - 1).coerceIn(MIN_DX, MAX_DX)
         in center ->  ball.dx
-        in rightMid -> (ball.dx + 1).coerceIn(-6, 6)
-        in rightExtreme -> (ball.dx + 3).coerceIn(-6, 6)
+        in rightMid -> (ball.dx + 1).coerceIn(MIN_DX, MAX_DX)
+        in rightExtreme -> (ball.dx + 3).coerceIn(MIN_DX, MAX_DX)
         else -> ball.dx
     }
 }
