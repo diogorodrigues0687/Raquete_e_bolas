@@ -19,7 +19,7 @@ fun moveRacket(racket: Racket, cursor: Int): Racket {
     return racket.copy(x = xLimit)
 }
 
-/**Função que modifica dx da bola conforme a colisão com as partes da raquete**/
+/**Função que modifica o deslocamento vertical da bola conforme a colisão com as partes da raquete**/
 fun RacketParts(ball: Ball, racket: Racket): Int {
     val pos = ball.x - racket.x
     val leftExtreme = 0..10
