@@ -12,6 +12,6 @@ fun drawGame(canvas: Canvas, game: Game) {
 }
 /**Função que atualiza o jogo**/
 fun updateGame(game: Game): Game {
-    val moveBalls = game.balls.map{ ballDirections(it, game.area) }
+    val moveBalls = game.balls.map{ ballDirections(it, game.area, game.racket)}.filter { it.y - it.radius <= game.area.height }
     return game.copy(balls = moveBalls)
 }
