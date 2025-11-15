@@ -12,7 +12,10 @@ fun drawGame(canvas: Canvas, game: Game) {
     drawRacket(canvas, game.racket)
 }
 /**Função que atualiza o jogo**/
-fun updateGame(game: Game): Game {
+fun updateGame(game: Game, canvas: Canvas): Game {
     val moveBalls = game.balls.map{ ballDirections(it, game.area, game.racket)}.filter { it.y - it.radius <= game.area.height }
+    if (moveBalls.isEmpty() && game.balls.isNotEmpty()) {
+        canvas.close()
+    }
     return game.copy(balls = moveBalls)
 }

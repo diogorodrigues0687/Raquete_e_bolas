@@ -18,13 +18,13 @@ const val NEW_BALL_RATE = 5000            //Frequência da invocação das bolas
 const val BALL_Y_SPAWN = 600              //Posição da invocação das bolas no eixo dos Y
 const val BALL_TEXT_Y = 595               //Posição do texto do número de bolas no eixo dos Y
 const val BALL_TEXT_SIZE = 26             //Tamanho do texto do número de bolas
-const val TEXT_COLOR = 0xFF7F00           //Cor do texto do número de bolas
+const val TEXT_COLOR = BLACK           //Cor do texto do número de bolas
 const val INIT_Y_DIR = -4                 //Direção vertical inicial das bolas
-const val BALL_COLOR = 0xFF7F00           //Cor das bolas
-const val BACKGROUND_COLOR = 0x222222     //Cor da janela
-const val RACKET_ELER_COLOR = RED         //Cor das extremidades da raquete
-const val RACKET_EMRM_COLOR = 0xFF7F00    //Cor das partes intermédias da raquete
-const val RACKET_CENTER_COLOR = YELLOW    //Cor da parte central da raquete
+const val BALL_COLOR = BLACK           //Cor das bolas
+const val BACKGROUND_COLOR = WHITE     //Cor da janela
+const val RACKET_ELER_COLOR = 0x222222         //Cor das extremidades da raquete
+const val RACKET_EMRM_COLOR = WHITE    //Cor das partes intermédias da raquete
+const val RACKET_CENTER_COLOR = BLACK    //Cor da parte central da raquete
 const val MAX_DX = 6                      //Limite máximo do deslocamento horizontal
 const val MIN_DX = -6                     //Limite mínimo do deslocamento horizontal
 
@@ -49,7 +49,7 @@ fun main() {
             game = game.copy(balls = game.balls + newBall)
         }
         window.onTimeProgress(GAME_UPDATE) {
-            game = updateGame(game)
+            game = updateGame(game, window)
             drawGame(window, game)
             window.drawText(width/2, BALL_TEXT_Y, "${game.balls.size}", TEXT_COLOR, BALL_TEXT_SIZE)
         }
