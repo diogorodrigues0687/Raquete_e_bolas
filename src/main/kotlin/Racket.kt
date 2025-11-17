@@ -5,6 +5,7 @@ data class Racket(val x: Int, val y: Int, val width: Int = RACKET_WIDTH, val hei
 
 /**Função que desenha a raquete**/
 fun drawRacket(canvas: Canvas, racket: Racket) {
+    canvas.drawLine(0, RACKET_POS_Y + 5, width, RACKET_POS_Y + 5, WHITE)
     canvas.drawRect(racket.x , racket.y, RACKET_WIDTH, racket.height, RACKET_CENTER_COLOR)
     canvas.drawRect(racket.x, racket.y, RACKET_EWIDTH, racket.height - 5, RACKET_ELER_COLOR)
     canvas.drawRect(racket.x + 10, racket.y, RACKET_MWIDTH, racket.height-5, RACKET_EMRM_COLOR)
